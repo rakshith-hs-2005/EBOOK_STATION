@@ -5,7 +5,8 @@ pipeline {
 
         stage('Clone Code') {
             steps {
-                git 'https://github.com/rakshith-hs-2005/EBOOK_STATION.git'
+                git branch: 'main',
+                url: 'https://github.com/rakshith-hs-2005/EBOOK_STATION.git'
             }
         }
 
@@ -17,13 +18,13 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t library-system .'
+                bat 'docker build -t ebookstation .'
             }
         }
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 5000:5000 library-system'
+                bat 'docker run -d -p 5000:5000 --name ebookstation ebookstation'
             }
         }
     }
