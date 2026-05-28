@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Registration | eBook Station</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(100deg, #ff7e5f, #feb47b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .register-box {
+            background: #fff;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .register-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .register-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .register-box button {
+            width: 100%;
+            padding: 10px;
+            background: #ff7e5f;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .register-box button:hover {
+            background: #ff6a3c;
+        }
+
+        .register-box p, .register-box a {
+            text-align: center;
+            font-size: 14px;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .register-box a {
+            color: #ff7e5f;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-box a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+<div class="register-box">
+    <h2>User Registration</h2>
+
+    <p class="error" id="errorMsg">Please fill all fields</p>
+
+    <form method="post" onsubmit="return validateForm()">
+        <input type="text" name="username" id="username" placeholder="Username">
+        <input type="password" name="password" id="password" placeholder="Password">
+        <button type="submit">Register</button>
+    </form>
+
+    <p><a href="/login">Back to Login</a></p>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function validateForm() {
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let errorMsg = document.getElementById("errorMsg");
+
+        if (username === "" || password === "") {
+            errorMsg.style.display = "block";
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

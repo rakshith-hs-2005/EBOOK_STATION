@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Available Books | eBook Station</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f7971e;
+            color: white;
+        }
+
+        table tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        a.download-btn {
+            background-color: #f7971e;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a.download-btn:hover {
+            background-color: #e06a00;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #f44336;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            table tr {
+                margin-bottom: 15px;
+            }
+
+            table th {
+                display: none;
+            }
+
+            table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+
+            table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Available Books</h2>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Download</th>
+        </tr>
+
+        {% for book in books %}
+        <tr>
+            <td data-label="Title">{{ book[1] }}</td>
+            <td data-label="Author">{{ book[2] }}</td>
+            <td data-label="Download">
+                <a class="download-btn" href="/static/books/{{ book[3] }}" target="_blank">Download</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a class="logout-btn" href="/logout">Logout</a>
+</div>
+
+</body>
+</html>

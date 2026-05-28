@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Book | eBook Station</title>
+
+    <!-- CSS -->
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .upload-box {
+            background: #fff;
+            padding: 30px;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .upload-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .upload-box input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .upload-box button {
+            width: 100%;
+            padding: 10px;
+            background: #43cea2;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-box button:hover {
+            background: #2a9d70;
+        }
+
+        .upload-box a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #43cea2;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .upload-box a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .success {
+            color: green;
+            text-align: center;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="upload-box">
+    <h2>Upload Book</h2>
+
+    <p class="error" id="errorMsg">Please fill all fields and select a PDF file.</p>
+    <p class="success" id="successMsg">Book uploaded successfully!</p>
+
+    <form method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <input type="text" name="title" id="title" placeholder="Book Title">
+        <input type="text" name="author" id="author" placeholder="Author Name">
+        <input type="file" name="book" id="book" accept=".pdf">
+
+        <button type="submit">Upload</button>
+    </form>
+
+    <a href="/admin">Back</a>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function validateForm() {
+        let title = document.getElementById("title").value.trim();
+        let author = document.getElementById("author").value.trim();
+        let book = document.getElementById("book").value;
+        let errorMsg = document.getElementById("errorMsg");
+
+        if (title === "" || author === "" || book === "") {
+            errorMsg.style.display = "block";
+            return false;
+        }
+        return true;
+    }
