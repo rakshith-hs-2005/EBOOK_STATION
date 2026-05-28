@@ -9,9 +9,9 @@ pipeline {
                 url: 'https://github.com/rakshith-hs-2005/EBOOK_STATION.git'
             }
         }
-        stage('Install Dependencies') {
+stage('Install Dependencies') {
     steps {
-        bat '"C:\\Users\\raksh\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" -m pip install -r requirements.txt'
+        bat '"C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\python3.11.exe" -m pip install -r requirements.txt'
     }
 }
 
