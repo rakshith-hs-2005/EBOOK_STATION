@@ -9,12 +9,11 @@ pipeline {
                 url: 'https://github.com/rakshith-hs-2005/EBOOK_STATION.git'
             }
         }
-
         stage('Install Dependencies') {
-            steps {
-                bat 'pip install -r requirements.txt'
-            }
-        }
+    steps {
+        bat '"C:\\Users\\raksh\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe" -m pip install -r requirements.txt'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
